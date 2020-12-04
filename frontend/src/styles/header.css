@@ -1,0 +1,31 @@
+header{
+    display:flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: #ebf9ff;
+    height: 10vh;
+}
+
+header div img{
+    width: 50%;
+}
+
+header nav{
+    display:flex;
+    justify-content:space-around;
+   
+}
+
+header nav a{
+    text-decoration:none;
+    text-transform:uppercase;
+    color:#050505;
+    padding:1rem;
+}
+
+header nav a:hover{
+    text-decoration:none;
+    text-transform:uppercase;
+    color:#52c0f7;
+    padding:1rem;
+}
