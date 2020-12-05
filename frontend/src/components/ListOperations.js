@@ -1,27 +1,19 @@
 import React from 'react'
-import { useEffect, useState } from 'react'
+import { useEffect } from 'react'
 import Operation from '../components/Operation'
+import { connect } from 'react-redux'
+import operationsActions from '../redux/actions/operationsActions'
 
-function ListOperations() {
-
-    const [operations, setOperations] = useState([])
+function ListOperations(props) {
 
     useEffect(() => {
-        getOperations()
+        props.allOperations()
     }, [])
 
-    const getOperations = async () => {
-        const data = await fetch('http://localhost:4800/operations')
-        const operations = await data.json()
-        setOperations(operations)
-    }
+    const ingressOperation = props.operations.filter(operation => operation.type_operation === 'ingress')
+    const egressOperation = props.operations.filter(operation => operation.type_operation === 'egress')
 
-    const ingressOperation = operations.filter(operation => operation.type_operation ==='ingress')
-    const egressOperation = operations.filter(operation => operation.type_operation ==='egress')
-    
     let contador = 1
-
-
 
     return (
         <div>
@@ -37,10 +29,9 @@ function ListOperations() {
                     </tr>
                 </thead>
                 <tbody>
-
                     {ingressOperation.map(operation => {
                         return (
-                            <Operation operation={operation} contador={contador++}/>
+                            <Operation operation={operation} contador={contador++} />
                         )
                     })}
                 </tbody>
@@ -61,7 +52,7 @@ function ListOperations() {
 
                     {egressOperation.map(operation => {
                         return (
-                            <Operation operation={operation} contador={contador++}/>
+                            <Operation operation={operation} contador={contador++} />
                         )
                     })}
                 </tbody>
@@ -69,5 +60,14 @@ function ListOperations() {
         </div>
     )
 }
+const mapStateToProps = state => {
+    return {
+        operations: state.operations.listOperations
+    }
+}
 
-export default ListOperations
+const mapDispatchToProps = {
+    allOperations: operationsActions.allOperations
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(ListOperations)

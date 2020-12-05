@@ -10,6 +10,7 @@ const Operation = function(operation){
 
 /*-------------------- querys SQL ------------------------*/
 
+
 Operation.create = (newOperation, result) => {
     sql.query("INSERT INTO operations set ?", newOperation, (err, res)=>{
         if(err){
@@ -34,17 +35,17 @@ Operation.getAll = result => {
     });
 };
 
-Operation.getLastTen = result => {
-    sql.query(`SELECT *, DATE_FORMAT (date_operation,'%d/%m/%Y') AS formatDate FROM operations ORDER BY id DESC limit 10`, (err, res) => {
-        if(err){
-            console.log("error", err);
-            result(null, err);
-            return;
-        }
-        console.log("operations: ", res);
-        result(null, res);
-    });
-};
+// Operation.getLastTen = result => {
+//     sql.query(`SELECT *, DATE_FORMAT (date_operation,'%d/%m/%Y') AS formatDate FROM operations ORDER BY id DESC limit 10`, (err, res) => {
+//         if(err){
+//             console.log("error", err);
+//             result(null, err);
+//             return;
+//         }
+//         console.log("operations: ", res);
+//         result(null, res);
+//     });
+// };
 
 Operation.findById = (operationId, result) => {
     sql.query(`SELECT * from operations WHERE id = ${operationId}`, (err, res) => {

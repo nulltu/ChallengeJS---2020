@@ -1,8 +1,10 @@
 import axios from 'axios';
 import {useState} from 'react'
 import '../styles/form.css'
+import {connect} from 'react-redux'
+import operationsActions from '../redux/actions/operationsActions'
 
-function Form() {
+function Form(props) {
 
     const [newOperation, setNewOperation] = useState({
         concept:'', amount:'', date_operation:'', type_operation:""
@@ -19,7 +21,7 @@ function Form() {
 
     const sendInfo = async e => {
         e.preventDefault()
-        await axios.post('http://localhost:4800/operation', newOperation)   
+        await props.addOperation(newOperation) 
     }
    
     return (
@@ -50,4 +52,8 @@ function Form() {
     )
 }
 
-export default Form
+const mapDispatchToProps = {
+    addOperation: operationsActions.addOperation
+}
+
+export default connect(null, mapDispatchToProps) (Form)
