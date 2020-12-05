@@ -7,12 +7,8 @@ function Operations() {
     
     return (
         <div className="container__operations">
-            <div>
                 <Form />
-            </div>
-            <div>
                 <ListOperations/>
-            </div>
         </div>
     )
 }

@@ -18,13 +18,21 @@ const operationsActions = {
         return async (dispatch, getState) => {
             const response = await axios.get(path + 'operations')
             const dataOperations = response.data
-            console.log(dataOperations)
             dispatch({
                 type: "ALL_OPERATIONS",
                 payload: dataOperations
             })
         }
     },
+
+    //CONTINUE
+
+    // operationById: (idOperation) =>{
+    //     return async (dispatch, getState) => {
+    //         const response = await fetch(`http:/operations/ + ${idOperation}`)
+    //         console.log(response)
+    //     }
+    // }
 
 }
 export default operationsActions

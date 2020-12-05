@@ -4,7 +4,7 @@ form{
     justify-content: center;
     align-items: left;
     background-color: #ebf9ff;
-    padding: 5rem 10rem;
+    padding: 5rem 8rem;
     border-radius: 5px;
 }
 
@@ -14,18 +14,11 @@ form div{
     align-items:end;
 }
 
-/* form div input, label{
-    margin: .5rem 1rem; 
+form div input, label{
+    margin: 0rem 1rem; 
     font-size: 1.2rem;
     padding: 0rem .5rem
-} */
-
-/* input[type="radio"] {
-    margin-top: 1.5rem;
-    -ms-transform: scale(2.5); 
-    -webkit-transform: scale(2.5);
-    transform: scale(2.5);
-} */
+}
 
 form button{
     background-color: black;
@@ -35,4 +28,13 @@ form button{
     border-radius: 5px;
     font-size: 1rem;
     text-transform: uppercase;
+}
+
+@media only screen and (max-width: 1500px) {
+
+    form{
+        padding: 1rem;
+        margin: 0rem 1rem 1rem 1rem;
+    }
+    
 }

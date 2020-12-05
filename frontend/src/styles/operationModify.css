@@ -1,17 +1,15 @@
-img{
-    width: 1rem;
+
+.container__modify{
+   display: flex;
+   flex-direction: center;
+   justify-content: center;
+   margin-top: 8rem;
 }
 
-.container__modify div:nth-child(1){
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10rem;
-}
-
-.container__modify div:nth-child(2){
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.modify__cancel{
+   margin-top: 1rem;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
 }

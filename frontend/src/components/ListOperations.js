@@ -10,12 +10,14 @@ function ListOperations(props) {
         props.allOperations()
     }, [])
 
+
+
     const ingressOperation = props.operations.filter(operation => operation.type_operation === 'ingress')
     const egressOperation = props.operations.filter(operation => operation.type_operation === 'egress')
 
     let contador = 1
 
-    console.log(props.operations)
+
 
     return (
         <div>

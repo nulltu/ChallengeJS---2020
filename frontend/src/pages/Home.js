@@ -1,7 +1,8 @@
 import '../styles/home.css'
-import { useEffect, useState } from 'react'
-import cool from '../assets/icons/cool.svg'
-import noCool from '../assets/icons/no-cool.svg'
+import { useEffect } from 'react'
+import cool from '../assets/images/cool.svg'
+import noCool from '../assets/images/no-cool.svg'
+import neutral from '../assets/images/neutral.svg'
 import { connect } from 'react-redux'
 import operationsActions from '../redux/actions/operationsActions'
 
@@ -14,14 +15,14 @@ function Home(props) {
     const filterFirstTen = props.operations.slice(0, 10) //We shrink the array to a maximum of 10 elements.
 
     let accumulatorNumberList = 1; //Index of table 
-    let totalIngress = 0; //Accumulator ingress
+    let totalIngressAmount = 0; //Accumulator ingress
     let totalEgressAmount = 0; //Accumulator egress
     if (props.operations === null) {
         <p>Now Loading</p>
     } else {
-        const totalIncome = props.operations.filter(operation => operation.type_operation === "ingress")
-        for (let i = 0; i < totalIncome.length; i++) {
-            totalIngress += totalIncome[i].amount;
+        const totalIngress = props.operations.filter(operation => operation.type_operation === "ingress")
+        for (let i = 0; i < totalIngress.length; i++) {
+            totalIngressAmount += totalIngress[i].amount;
         }
         const totalEgress = props.operations.filter(operation => operation.type_operation === "egress")
         for (let i = 0; i < totalEgress.length; i++) {
@@ -29,22 +30,32 @@ function Home(props) {
         }
     }
 
+    const totalBalance = totalIngressAmount - totalEgressAmount;
+    console.log(totalBalance);
+
     return (
 
         //Render Home
         <div className="container__home">
             <div className="resulting">
                 <div>
-                    <img src={cool} alt="" />
-                    <p>Total income: <span>${totalIngress}</span></p>
+                    {
+                        totalBalance > 0 ? <img src={cool} alt="" />
+                            : totalBalance === 0 ? <img src={neutral} alt="" />
+                                : <img src={noCool} alt="" />
+                    }
+                    <div className="value__balance">
+                        <p className="total__balance">Total Balance:</p>
+                        <span>${totalBalance}</span>
+                    </div>
                 </div>
                 <div>
-                    <img src={noCool} alt="" />
-                    <p>Total egress: <span>${totalEgressAmount}</span> </p>
+                    <p className="ingress">Total Ingress: ${totalIngressAmount}</p>
+                    <p className="egress">Total Egress: ${totalEgressAmount}</p>
                 </div>
             </div>
             <div className="last__ten">
-                <table class="table">
+                <table className="table">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
@@ -57,7 +68,7 @@ function Home(props) {
                             return (
                                 <tr>
                                     <th scope="row">{accumulatorNumberList++}</th>
-                                    <td class={operation.type_operation === 'ingress' ? "ingress" : "egress"}>{operation.concept}</td>
+                                    <td className={operation.type_operation === 'ingress' ? "ingress" : "egress"}>{operation.concept}</td>
                                 </tr>
                             )
                         })}
@@ -77,6 +88,5 @@ const mapStateToProps = state => {
 const mapDispatchToProps = {
     allOperations: operationsActions.allOperations
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)

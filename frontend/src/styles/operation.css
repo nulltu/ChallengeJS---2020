@@ -3,5 +3,22 @@
     display: flex;
     justify-content:space-around;
     align-items:center;
-    
 }
+
+.container__icons__operation{
+    display: flex;
+    justify-content:space-around;
+}
+
+.container__icons__operation img{
+    width:1.5rem;
+}
+
+@media only screen and (max-width: 1500px) {
+
+    .container__operations{
+        margin-top:1rem;
+        flex-direction:column;
+    }
+}
+    
