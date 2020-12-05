@@ -1,7 +1,6 @@
 import Home from '../src/pages/Home'
 import Operations from '../src/pages/Operations'
 import Header from '../src/components/Header'
-import Footer from '../src/components/Footer'
 import Operation from '../src/components/Operation'
 import OperationModify from '../src/components/OperationModify'
 import OperationDelete from '../src/components/OperationDelete'
@@ -21,7 +20,6 @@ function App() {
           <Route path='/operation' component={Operation} />
           <Redirect to='/' />
         </Switch>
-        <Footer />
       </BrowserRouter>
     </>
   );

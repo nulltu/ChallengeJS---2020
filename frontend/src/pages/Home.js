@@ -30,6 +30,8 @@ function Home(props) {
     }
 
     return (
+
+        //Render Home
         <div className="container__home">
             <div className="resulting">
                 <div>

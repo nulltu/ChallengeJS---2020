@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 function Operation(props) {
     return (
         <tr>
-        <th scope="row">{props.contador}</th>
         <td>{props.operation.concept}</td>
         <td>${props.operation.amount}</td>
         <td>{props.operation.formatDate}</td>

@@ -15,12 +15,13 @@ function ListOperations(props) {
 
     let contador = 1
 
+    console.log(props.operations)
+
     return (
         <div>
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Concept</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Date</th>
@@ -40,7 +41,6 @@ function ListOperations(props) {
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
                         <th scope="col">Concept</th>
                         <th scope="col">Amount</th>
                         <th scope="col">Date</th>
@@ -52,7 +52,7 @@ function ListOperations(props) {
 
                     {egressOperation.map(operation => {
                         return (
-                            <Operation operation={operation} contador={contador++} />
+                            <Operation operation={operation}/>
                         )
                     })}
                 </tbody>

@@ -4,6 +4,12 @@ const initialState =  {
 
 const operationsReducer = (state = initialState, action)=>{
     switch(action.type){
+
+        case 'NEW_OPERATION':
+            return {
+                ...state,
+                listOperations: [...state.listOperations, action.payload]
+            }
         case 'ALL_OPERATIONS':
             return{
                 ...state,

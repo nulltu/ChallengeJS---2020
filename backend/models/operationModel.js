@@ -26,7 +26,6 @@ Operation.create = (newOperation, result) => {
 Operation.getAll = result => {
     sql.query("SELECT *, DATE_FORMAT (date_operation,'%d/%m/%Y') AS formatDate FROM operations ORDER BY id DESC", (err, res) => {
         if(err){
-            console.log("error", err);
             result(null, err);
             return;
         }

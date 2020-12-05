@@ -1,13 +1,13 @@
 import axios from 'axios';
-import {useState} from 'react'
+import { useState } from 'react'
 import '../styles/form.css'
-import {connect} from 'react-redux'
+import { connect } from 'react-redux'
 import operationsActions from '../redux/actions/operationsActions'
 
 function Form(props) {
 
     const [newOperation, setNewOperation] = useState({
-        concept:'', amount:'', date_operation:'', type_operation:""
+        concept: '', amount: '', date_operation: '', type_operation: ""
     })
 
     const readInput = e => {
@@ -21,32 +21,57 @@ function Form(props) {
 
     const sendInfo = async e => {
         e.preventDefault()
-        await props.addOperation(newOperation) 
+        const response = await props.addOperation(newOperation)
+        if (response.status === 200) {
+            setNewOperation({
+                concept: "",
+                amount: "",
+                date_operation: "",
+                type_operation: "",
+            })
+        }
     }
-   
+
+    console.log(newOperation.date_operation)
+
     return (
         <form>
+
+<div class="form-group">
+    <label for="formGroupExampleInput">Concept</label>
+    <input type="text" class="form-control" id="formGroupExampleInput"  onChange={readInput} name="concept"
+                    value={newOperation.concept} placeholder="For example: Buy TV LG" />
+  </div>
+            {/* <div>
+                <label  htmlFor="" >Concept:</label>
+                <input className="form-control" type="text" onChange={readInput} name="concept"
+                    value={newOperation.concept} placeholder="For example: Buy TV LG" />
+            </div> */}
             <div>
-                <label htmlFor="" >Concept</label>
-                <input type="text" onChange={readInput} name="concept"/>
-            </div>
-            <div>
-                <label htmlFor="">Amount</label>
-                <input type="number"onChange={readInput} name="amount"/>
+                <label htmlFor="">Amount:</label>
+                <input className="form-control" type="number" onChange={readInput} name="amount" value={newOperation.amount} placeholder="$" />
             </div>
 
             <div>
-                <label htmlFor="">Fecha</label>
-                <input type="date" onChange={readInput} name="date_operation"/>
+                <label htmlFor="">Date:</label>
+                <input className="form-control" type="date" onChange={readInput} name="date_operation" value={newOperation.date_operation} />
             </div>
 
-            <div>
-                <label htmlFor="income-form">Ingress</label>
-                <input type="radio" id="income-form" name="type_operation" value="ingress" onChange={readInput}/>
-                
-                <label htmlFor="egress-form">Egress</label>
-                <input type="radio" id="egress-form" name="type_operation" value="egress" onChange={readInput}/>
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="type_operation" class="custom-control-input" checked={newOperation.type_operation === "ingress"} onChange={readInput} value="ingress"/>
+                <label className="custom-control-label" for="customRadioInline1">Ingress</label>
             </div>
+            <div className="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="type_operation" class="custom-control-input" checked={newOperation.type_operation === "egress"} onChange={readInput} value="egress"/>
+                <label className="custom-control-label" for="customRadioInline2">Egress</label>
+            </div>
+            {/* <div>
+                <label htmlFor="ingress-form">Ingress:</label>
+                <input className="" type="checkbox" id="ingress-form" name="type_operation" checked={newOperation.type_operation === "ingress"} onChange={readInput} value="ingress" />
+
+                <label htmlFor="egress-form">Egress:</label>
+                <input className="" type="radio" id="egress-form" name="type_operation" checked={newOperation.type_operation === "egress"} onChange={readInput} value="egress" />
+            </div> */}
             <button onClick={sendInfo}>Sent</button>
         </form>
     )
@@ -56,4 +81,6 @@ const mapDispatchToProps = {
     addOperation: operationsActions.addOperation
 }
 
-export default connect(null, mapDispatchToProps) (Form)
+
+
+export default connect(null, mapDispatchToProps)(Form)
