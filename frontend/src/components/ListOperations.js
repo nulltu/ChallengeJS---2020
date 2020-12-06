@@ -21,7 +21,7 @@ function ListOperations(props) {
 
     return (
         <div>
-            <table class="table table-bordered">
+            <table className="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">Concept</th>
@@ -40,7 +40,7 @@ function ListOperations(props) {
                 </tbody>
             </table>
 
-            <table class="table table-bordered">
+            <table className="table table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">Concept</th>

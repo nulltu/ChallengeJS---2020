@@ -8,7 +8,7 @@ function Operation(props) {
         <td>{props.operation.concept}</td>
         <td>${props.operation.amount}</td>
         <td>{props.operation.formatDate|| props.operation.date_operation}</td>
-        <td class={props.operation.type_operation === 'ingress' ? "ingress" : "egress"}>
+        <td className={props.operation.type_operation === 'ingress' ? "ingress" : "egress"}>
             {props.operation.type_operation}
         </td>
         <td className="container__icons__operation">

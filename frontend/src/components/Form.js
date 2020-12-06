@@ -55,12 +55,12 @@ function Form(props) {
                 <div className="custom-control custom-radio custom-control-inline">
                     <input type="radio" id="customRadioInline1" name="type_operation" className="custom-control-input"
                         checked={newOperation.type_operation === "ingress"} onChange={readInput} value="ingress" />
-                    <label className="custom-control-label" for="customRadioInline1">Ingress</label>
+                    <label className="custom-control-label" htmlFor="customRadioInline1">Ingress</label>
                 </div>
                 <div className="custom-control custom-radio custom-control-inline">
                     <input type="radio" id="customRadioInline2" name="type_operation" className="custom-control-input"
                         checked={newOperation.type_operation === "egress"} onChange={readInput} value="egress" />
-                    <label className="custom-control-label" for="customRadioInline2">Egress</label>
+                    <label className="custom-control-label" htmlFor="customRadioInline2">Egress</label>
                 </div>
             </div>
             <button type="button" className="btn btn-dark" onClick={sendInfo}>Submit</button>

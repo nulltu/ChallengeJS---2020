@@ -12,7 +12,8 @@ function Home(props) {
         props.allOperations()
     }, [])
 
-    const filterFirstTen = props.operations.slice(0, 10) //We shrink the array to a maximum of 10 elements.
+    //We shrink the array to a maximum of 10 elements.
+    const filterFirstTen = props.operations.slice(0, 10) 
 
     let accumulatorNumberList = 1; //Index of table 
     let totalIngressAmount = 0; //Accumulator ingress
@@ -29,10 +30,8 @@ function Home(props) {
             totalEgressAmount += totalEgress[i].amount;
         }
     }
-
+    //Total Balance
     const totalBalance = totalIngressAmount - totalEgressAmount;
-    console.log(totalBalance);
-
     return (
 
         //Render Home
@@ -60,7 +59,6 @@ function Home(props) {
                         <tr>
                             <th scope="col">#</th>
                             <th scope="col">Concept</th>
-
                         </tr>
                     </thead>
                     <tbody>
@@ -68,7 +66,9 @@ function Home(props) {
                             return (
                                 <tr>
                                     <th scope="row">{accumulatorNumberList++}</th>
-                                    <td className={operation.type_operation === 'ingress' ? "ingress" : "egress"}>{operation.concept}</td>
+                                    <td className={operation.type_operation === 'ingress' ? "ingress" : "egress"}>
+                                        {operation.concept}
+                                    </td>
                                 </tr>
                             )
                         })}
