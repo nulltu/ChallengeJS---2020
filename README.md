@@ -7,10 +7,7 @@ operaciones registradas.
 
 ## Demo 📦
 
-_Para ver una demo del proyecto desplegado, puedes ir a [Demo del proyecto](http://pyral.herokuapp.com/)_
-
-Comenzando 🚀
-git clone: https://github.com/nulltu/ChallengeJS---2020.git
+_Para ver una demo del proyecto desplegado, puedes ir a [Demo del proyecto](https://shielded-hollows-74176.herokuapp.com/)_
 
 ## Comenzando 🚀
 
