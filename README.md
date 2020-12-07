@@ -9,6 +9,8 @@ operaciones registradas.
 
 _Para ver una demo del proyecto desplegado, puedes ir a [Demo del proyecto](https://shielded-hollows-74176.herokuapp.com/)_
 
+```# Instalar dependencias para el servidor y frontend
+
 ## Comenzando 🚀
 # Instalar dependencias para el cliente - Tanto en carpeta "fronted como backend"
 npm install
