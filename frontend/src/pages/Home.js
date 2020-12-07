@@ -64,7 +64,7 @@ function Home(props) {
                     <tbody>
                         {filterFirstTen.map(operation => {
                             return (
-                                <tr>
+                                <tr  key={operation.id}>
                                     <th scope="row">{accumulatorNumberList++}</th>
                                     <td className={operation.type_operation === 'ingress' ? "ingress" : "egress"}>
                                         {operation.concept}

@@ -4,7 +4,7 @@ import edit from '../assets/icons/edit.svg'
 
 function Operation(props) {
     return (
-        <tr>
+        <tr  key={props.operation.id}>
         <td>{props.operation.concept}</td>
         <td>${props.operation.amount}</td>
         <td>{props.operation.formatDate|| props.operation.date_operation}</td>

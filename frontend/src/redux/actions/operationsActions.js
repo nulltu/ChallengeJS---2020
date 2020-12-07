@@ -35,7 +35,6 @@ const operationsActions = {
     },
 
     updateOperation: (idOperation, dataOperation) => {
-        console.log(idOperation, dataOperation)
         return async (dispatch, getState) => {
             const response = await axios.put(path + 'operations/' + idOperation, dataOperation)
             const updateData = response.data
@@ -44,7 +43,6 @@ const operationsActions = {
     },
 
     deleteOperation: (idOperation) => {
-        console.log(idOperation)
         return async (dispatch, getState) => {
             const response = await axios.delete(path + 'operations/' + idOperation)
             return response
