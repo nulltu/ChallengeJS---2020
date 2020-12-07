@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const path = 'http://127.0.0.1:4800/'
+const path = 'http://localhost:4800/'
 
 const operationsActions = {
     
