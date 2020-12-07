@@ -1,7 +1,7 @@
 const Operation = require('../models/operationModel');
 
 
-//Create and save a new Operation
+
 exports.create = (req, res) => {
     //Validate request
     if (!req.body) {
@@ -39,18 +39,6 @@ exports.findAll = (req, res) => {
         else res.send(data);
     })
 };
-
-// exports.lastTen = (req, res) => {
-
-//     Operation.getLastTen((err, data) => {
-//         if (err)
-//             res.status(500).send({
-//                 message:
-//                     err.message || "Some error occurred while retrieving operations"
-//             });
-//         else res.send(data);
-//     })
-// };
 
 exports.findOne = (req, res) => {
     Operation.findById(req.params.operationId, (err, data) => {
