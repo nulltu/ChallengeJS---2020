@@ -7,9 +7,6 @@ module.exports = app =>{
     //All Operations
     app.get("/operations", operations.findAll);
 
-    //Last 10 operations
-    // app.get("/operations/lastTen", operations.lastTen)
-
     //Find by id
     app.get("/operations/:operationId", operations.findOne)
 
