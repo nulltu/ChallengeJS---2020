@@ -57,7 +57,7 @@ function OperationModify(props) {
                 <div className="form-group">
                     <label>Amount:</label>
                     <input className="form-control" type="number" onChange={readInput} name="amount"
-                        value={updateOperation.amount} placeholder={operation.amount} />
+                        value={updateOperation.amount} placeholder={`$${operation.amount}`} />
                 </div>
                 <div className="form-group">
                     <label>Date:</label>

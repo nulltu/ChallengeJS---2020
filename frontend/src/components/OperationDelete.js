@@ -1,6 +1,5 @@
 import { useEffect } from 'react'
 import '../styles/operationModify.css'
-import axios from 'axios'
 import swal from 'sweetalert';
 import { connect } from 'react-redux'
 import operationsActions from '../redux/actions/operationsActions'

@@ -6,25 +6,26 @@ header{
 }
 
 header div img{
-    width: 50%;
+    width: 5rem;
+    margin-left: 0.5rem;
 }
 
 header nav{
     display:flex;
     justify-content:space-around;
-   
+    margin: 2rem;
 }
 
 header nav a{
     text-decoration:none;
     text-transform:uppercase;
+    font-size: .9rem;
     color:#050505;
-    padding:1rem;
+    margin: 0rem 1rem;
 }
 
 header nav a:hover{
     text-decoration:none;
     text-transform:uppercase;
     color:#52c0f7;
-    padding:1rem;
 }

@@ -1,7 +1,5 @@
 const Operation = require('../models/operationModel');
 
-
-
 exports.create = (req, res) => {
     //Validate request
     if (!req.body) {
@@ -18,7 +16,7 @@ exports.create = (req, res) => {
         type_operation: req.body.type_operation
     });
 
-    //Save Operation in the database
+    // Create and Save a new operation
     Operation.create(operation, (err, data) => {
         if (err)
             res.status(500).send({
@@ -29,6 +27,7 @@ exports.create = (req, res) => {
     });
 };
 
+// Retrieve all operations from the database.
 exports.findAll = (req, res) => {
     Operation.getAll((err, data) => {
         if (err)
@@ -40,6 +39,7 @@ exports.findAll = (req, res) => {
     })
 };
 
+// Find a single operation with a operationId
 exports.findOne = (req, res) => {
     Operation.findById(req.params.operationId, (err, data) => {
         if (err) {
@@ -56,6 +56,7 @@ exports.findOne = (req, res) => {
     })
 };
 
+// Delete a Operation with the specified operationId in the request
 exports.delete = (req, res) => {
     Operation.remove(req.params.operationId, (err, data) => {
         if (err) {
@@ -72,6 +73,7 @@ exports.delete = (req, res) => {
     })
 };
 
+// Update a Operation identified by the operationId in the request
 exports.update = function (req, res) {
     if (!req.body) {
         res.status(400).send({
