@@ -7,7 +7,7 @@ operaciones registradas.
 
 ## Demo 📦
 
-_Para ver una demo del proyecto desplegado, puedes ir a [Demo del proyecto](https://serene-bastion-71382.herokuapp.com/)_
+_Para ver una demo del proyecto desplegado, puedes ir a [Demo del proyecto](https://rusbent-challenge-js.herokuapp.com/)_
 
 ```# Instalar dependencias para el servidor y frontend
 
