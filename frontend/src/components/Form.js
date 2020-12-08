@@ -2,14 +2,17 @@ import { useState } from 'react'
 import '../styles/form.css'
 import { connect } from 'react-redux'
 import operationsActions from '../redux/actions/operationsActions'
+import swal from 'sweetalert';
 
 
 function Form(props) {
 
+    //create object new operation
     const [newOperation, setNewOperation] = useState({
-        concept: '', amount: '', date_operation: '', type_operation: ""
+        concept:null , amount: '', date_operation: '', type_operation: null
     })
 
+    //read inputs and saved in state
     const readInput = e => {
         const textBox = e.target.name
         const value = e.target.value
@@ -19,11 +22,15 @@ function Form(props) {
         })
     }
 
+    //send opetation and validate simple form 
     const sendInfo = async e => {
-
         e.preventDefault()
         const response = await props.addOperation(newOperation)
-        if (response.status === 200) {
+        console.log(response)
+        if(response.data.errno) {
+            swal({ title: 'Complete all fields please' })
+        }
+        else if(response.status === 200) {
             setNewOperation({
                 concept: "",
                 amount: "",
@@ -68,10 +75,9 @@ function Form(props) {
     )
 }
 
+//send operation to the corresponding actions.
 const mapDispatchToProps = {
     addOperation: operationsActions.addOperation
 }
-
-
 
 export default connect(null, mapDispatchToProps)(Form)

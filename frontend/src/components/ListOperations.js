@@ -7,17 +7,13 @@ import operationsActions from '../redux/actions/operationsActions'
 function ListOperations(props) {
 
     useEffect(() => {
+        //we bring the data from redux
         props.allOperations()
     }, [])
 
-
-
+    //filter for type operation
     const ingressOperation = props.operations.filter(operation => operation.type_operation === 'ingress')
     const egressOperation = props.operations.filter(operation => operation.type_operation === 'egress')
-
-    let contador = 1
-
-
 
     return (
         <div>
@@ -25,16 +21,16 @@ function ListOperations(props) {
                 <thead>
                     <tr>
                         <th scope="col">Concept</th>
-                        <th scope="col">Amount</th>
+                        <th scope="col">$</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Type Operation</th>
-                        <th scope="col">Remove/Modify</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Del/Mod</th>
                     </tr>
                 </thead>
                 <tbody>
                     {ingressOperation.map(operation => {
                         return (
-                            <Operation operation={operation} contador={contador++} />
+                            <Operation operation={operation} />
                         )
                     })}
                 </tbody>
@@ -44,10 +40,10 @@ function ListOperations(props) {
                 <thead>
                     <tr>
                         <th scope="col">Concept</th>
-                        <th scope="col">Amount</th>
+                        <th scope="col">$</th>
                         <th scope="col">Date</th>
-                        <th scope="col">Type Operation</th>
-                        <th scope="col">Remove/Modify</th>
+                        <th scope="col">Type</th>
+                        <th scope="col">Del/Mod</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -62,6 +58,8 @@ function ListOperations(props) {
         </div>
     )
 }
+
+//access state to redux
 const mapStateToProps = state => {
     return {
         operations: state.operations.listOperations

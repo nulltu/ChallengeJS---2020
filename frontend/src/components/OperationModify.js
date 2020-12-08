@@ -40,8 +40,6 @@ function OperationModify(props) {
         const response = await props.updateOperation(idSearch, updateOperation)
         if (!response.code) {
             props.history.push('/Operations')
-            swal({
-                title: "The operation has been modified successfully" })
         } else {
             swal({ title: 'Complete all fields please' })
         }
@@ -59,7 +57,7 @@ function OperationModify(props) {
                 <div className="form-group">
                     <label>Amount:</label>
                     <input className="form-control" type="number" onChange={readInput} name="amount"
-                        value={updateOperation.amount} placeholder={operation.amount} />
+                        value={updateOperation.amount} placeholder={`$${operation.amount}`} />
                 </div>
                 <div className="form-group">
                     <label>Date:</label>
