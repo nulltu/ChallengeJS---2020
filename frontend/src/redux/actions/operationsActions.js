@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const path = 'http://localhost:4800/'
+const path = 'https://warm-atoll-18281.herokuapp.com/'
 
 const operationsActions = {
     

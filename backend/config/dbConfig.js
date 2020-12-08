@@ -1,5 +1,10 @@
+// module.exports = {
+//     HOST : "localhost",
+//     USER: "root",
+//     PASSWORD: "Milanesaq7",
+//     DB:"control_operations"
+// }
 
-//Connection data
 module.exports = {
     HOST : 'remotemysql.com',
     USER: 'J5LbYMEe5e',

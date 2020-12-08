@@ -40,6 +40,8 @@ function OperationModify(props) {
         const response = await props.updateOperation(idSearch, updateOperation)
         if (!response.code) {
             props.history.push('/Operations')
+            swal({
+                title: "The operation has been modified successfully" })
         } else {
             swal({ title: 'Complete all fields please' })
         }
