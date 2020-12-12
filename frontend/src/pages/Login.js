@@ -6,10 +6,11 @@ import userActions from '../redux/actions/userActions'
 import Button from '@material-ui/core/Button';
 import '../styles/login.css'
 import { TextField } from "@material-ui/core";
+import swal from 'sweetalert';
 
 function Login(props) {
 
-    const inputStyle = { WebkitBoxShadow: "0 0 0 1000px white inset" };
+    // const inputStyle = { WebkitBoxShadow: "0 0 0 1000px white inset" };
 
     const [loginData, setLoginData] = useState({ username: '', password: '' })
 
@@ -22,12 +23,13 @@ function Login(props) {
         })
     }
 
+    console.log(loginData)
     console.log(props)
 
     const sendInfo = async e => {
         e.preventDefault()
-        const response = await props.loginApp(loginData)
-        console.log(response.data)
+        if(loginData.username != ""){
+            const response = await props.loginApp(loginData)
         if (response.data.message === "Authentication successful") {
             setLoginData({
                 username: '',
@@ -36,6 +38,10 @@ function Login(props) {
 
             props.history.push('/operations')
         }
+        }else {
+            swal({ title: "The username and / or password field is empty."})
+        }
+        
     }
 
     return (

@@ -1,15 +1,51 @@
+import 'date-fns';
+import React from 'react';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+    MuiPickersUtilsProvider,
+    KeyboardDatePicker,
+} from '@material-ui/pickers';
 import { useState } from 'react'
 import '../styles/form.css'
 import { connect } from 'react-redux'
 import operationsActions from '../redux/actions/operationsActions'
 import swal from 'sweetalert';
+import TextField from '@material-ui/core/TextField';
+
+import Radio from '@material-ui/core/Radio';
+import RadioGroup from '@material-ui/core/RadioGroup';
+import FormControlLabel from '@material-ui/core/FormControlLabel';
+import FormControl from '@material-ui/core/FormControl';
+import FormLabel from '@material-ui/core/FormLabel';
+import Button from '@material-ui/core/Button';
+import SaveIcon from '@material-ui/icons/Save';
+
+
 
 
 function Form(props) {
 
+
+    
+    const [selectedDate, setSelectedDate] = React.useState(new Date());
+    const handleDateChange = (date) => {
+        setSelectedDate(date);
+        console.log(date)
+    };
+
+    
+    // SEGUIR AQUI!!!!
+    
+
+    const [value, setValue] = React.useState('');
+    const handleChange = (event) => {
+        setValue(event.target.value);
+    };
+
     //create object new operation
     const [newOperation, setNewOperation] = useState({
-        concept:null , amount: '', date_operation: '', type_operation: null
+        concept: null, amount: '', date_operation: '', type_operation: null
     })
 
     //read inputs and saved in state
@@ -18,7 +54,7 @@ function Form(props) {
         const value = e.target.value
         setNewOperation({
             ...newOperation,
-            [textBox]: value
+            [textBox]: value,
         })
     }
 
@@ -26,11 +62,11 @@ function Form(props) {
     const sendInfo = async e => {
         e.preventDefault()
         const response = await props.addOperation(newOperation)
-       
-        if(response.data.errno) {
+
+        if (response.data.errno) {
             swal({ title: 'Complete all fields please' })
         }
-        else if(response.status === 200) {
+        else if (response.status === 200) {
             setNewOperation({
                 concept: "",
                 amount: "",
@@ -40,37 +76,80 @@ function Form(props) {
         }
     }
 
+    console.log(setSelectedDate)
+
     return (
         <form>
             <div className="form-group">
-                <label>Concept</label>
-                <input type="text" className="form-control" onChange={readInput} name="concept"
-                    value={newOperation.concept} placeholder="For example: Buy TV LG" />
+                <TextField
+                    id="standard-full-width"
+                    label="Concept"
+                    style={{ margin: 8 }}
+                    placeholder="For example: Buy TV LG"
+                    fullWidth
+                    margin="normal"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    type="text"
+                    onChange={readInput}
+                    name="concept"
+                    value={newOperation.concept}
+                />
             </div>
             <div className="form-group">
-                <label>Amount:</label>
-                <input className="form-control" type="number" onChange={readInput} name="amount"
-                    value={newOperation.amount} placeholder="$" />
+                <TextField
+                    id="standard-full-width"
+                    label="Amount"
+                    style={{ margin: 8 }}
+                    placeholder="$"
+                    fullWidth
+                    margin="normal"
+                    InputLabelProps={{
+                        shrink: true,
+                    }}
+                    type="number"
+                    onChange={readInput}
+                    name="amount"
+                    value={newOperation.amount}
+                />
             </div>
 
             <div className="form-group">
-                <label>Date:</label>
-                <input className="form-control" type="date" onChange={readInput} name="date_operation"
-                    value={newOperation.date_operation} />
+                <MuiPickersUtilsProvider utils={DateFnsUtils}>
+                    <Grid container justify="space-around">
+                        <KeyboardDatePicker
+                            margin="normal"
+                            id="date-picker-dialog"
+                            label="Date picker dialog"
+                            format="MM/dd/yyyy"
+                            value={selectedDate}
+                            onChange={handleDateChange}
+                            KeyboardButtonProps={{
+                                'aria-label': 'change date',
+                            }}
+                        />
+                    </Grid>
+                </MuiPickersUtilsProvider>
             </div>
             <div>
-                <div className="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline1" name="type_operation" className="custom-control-input"
-                        checked={newOperation.type_operation === "ingress"} onChange={readInput} value="ingress" />
-                    <label className="custom-control-label" htmlFor="customRadioInline1">Ingress</label>
-                </div>
-                <div className="custom-control custom-radio custom-control-inline">
-                    <input type="radio" id="customRadioInline2" name="type_operation" className="custom-control-input"
-                        checked={newOperation.type_operation === "egress"} onChange={readInput} value="egress" />
-                    <label className="custom-control-label" htmlFor="customRadioInline2">Egress</label>
-                </div>
+                <RadioGroup aria-label="gender" name="gender1" value={value} onChange={handleChange}>
+                    <FormControlLabel control={<Radio />} checked={newOperation.type_operation === "ingress"}
+                     label="Ingress" name="type_operation" onChange={readInput} value="ingress" />
+                    <FormControlLabel control={<Radio />} checked={newOperation.type_operation === "egress"}
+                     label="Egress" name="type_operation" onChange={readInput} value="egress" />
+                </RadioGroup>
             </div>
-            <button type="button" className="btn btn-dark" onClick={sendInfo}>Submit</button>
+            <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={sendInfo}
+                startIcon={<SaveIcon />}
+            >
+                Save
+             </Button>
+
         </form>
     )
 }

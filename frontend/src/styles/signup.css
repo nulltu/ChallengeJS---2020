@@ -1,0 +1,33 @@
+.container__signup{
+    display: flex;
+    flex-direction: column;
+    justify-content:space-around;
+    align-items:center;
+    margin-top: 5rem;
+}
+
+.container__signup div{
+    display: flex;
+    flex-direction: column;
+    margin: .2rem;
+    text-align: center!important;
+    justify-content: center!important;
+}
+
+.container__signup div:nth-child(4){
+    margin-top: 1rem;
+    display: flex;
+    flex-direction:column;
+    justify-content: center;
+    align-items:center;
+}
+
+.container__signup div:nth-child(4) span:nth-child(2){
+    margin-top: 1rem;
+    font-size: .8rem;
+}
+
+.container__signup div:nth-child(4) a{
+    color: rgb(25, 92, 194); 
+    text-decoration: none
+ }

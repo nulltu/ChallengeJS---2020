@@ -19,8 +19,11 @@ function Header(props) {
                     <Link to="/home">OP</Link>
               </div>
               <div className="container__hrefs">
-                    <Link to="home">Home</Link>
-                    <Link to="/operations">Operations</Link>
+                    {props.tokenLogged
+                    ?<><Link to="home">Home</Link>
+                    <Link to="/operations">Operations</Link></>
+                    :<>{null}</>
+}
               </div>
               <div className="container__status__login">
                     {

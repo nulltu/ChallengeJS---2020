@@ -18,3 +18,12 @@
     text-align: center!important;
 }
 
+.container__login div:nth-child(3) span:nth-child(2){
+    margin-top: 1rem;
+    font-size: .8rem;
+}
+
+.container__login div:nth-child(3) a{
+   color: rgb(25, 92, 194); 
+   text-decoration: none
+}
