@@ -26,7 +26,7 @@ function Form(props) {
     const sendInfo = async e => {
         e.preventDefault()
         const response = await props.addOperation(newOperation)
-        console.log(response)
+       
         if(response.data.errno) {
             swal({ title: 'Complete all fields please' })
         }

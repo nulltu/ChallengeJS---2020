@@ -1,30 +1,34 @@
-const express = require('express');
-const cors = require('cors');
-const bodyParser = require('body-parser');
-const path = require('path');
+const express = require("express");
+const bodyParser = require("body-parser");
+const cors = require("cors");
 
 const app = express();
-app.use(cors()); 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
 
-//Welcome Api - TEST
-app.get("/api", (req, res) => {
-    res.json({message: "API OK"});
+
+app.use(cors());
+
+// parse requests of content-type - application/json
+app.use(bodyParser.json());
+
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: true }));
+
+const db = require("./app/models");
+
+//create table !noExists
+db.sequelize.sync();
+
+// simple route
+app.get("/", (req, res) => {
+  res.json({ message: "Welcome to bezkoder application." });
 });
 
-require("./routes/operationRoutes")(app);
+require("./app/routes/opertation.routes")(app);
+require('./app/routes/auth.routes')(app);
+require('./app/routes/user.routes')(app);
 
-// if(process.env.NODE_ENV === 'production') {
-//     app.use(express.static('client/build'))
-//     app.get('*', (req, res) => {
-//         res.sendFile(path.join(__dirname, + '/client/build/index.html'));
-//     })
-// }
-
-const PORT = process.env.PORT || 4800;
-app.listen(PORT, ()=>{
-    console.log(`Server is running on port ${PORT}`);
-})
-
-
+// set port, listen for requests
+const PORT = process.env.PORT || 8082;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});

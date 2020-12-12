@@ -15,23 +15,26 @@ function Home(props) {
     //We shrink the array to a maximum of 10 elements.
     const filterFirstTen = props.operations.slice(0, 10) 
 
+   
+
     let accumulatorNumberList = 1; //Index of table 
-    let totalIngressAmount = 0; //Accumulator ingress
-    let totalEgressAmount = 0; //Accumulator egress
+    let sumIngress = 0;
+    let sumEgress = 0;
     if (props.operations === null) {
         <p>Now Loading</p>
     } else {
+
         const totalIngress = props.operations.filter(operation => operation.type_operation === "ingress")
-        for (let i = 0; i < totalIngress.length; i++) {
-            totalIngressAmount += totalIngress[i].amount;
-        }
+             sumIngress = totalIngress.reduce((sum, value) => (sum + parseFloat(value.amount)), 0)
+
+        
         const totalEgress = props.operations.filter(operation => operation.type_operation === "egress")
-        for (let i = 0; i < totalEgress.length; i++) {
-            totalEgressAmount += totalEgress[i].amount;
-        }
+        sumEgress = totalEgress.reduce((sum, value) => (sum + parseFloat(value.amount)), 0)
+        
     }
-    //Total Balance
-    const totalBalance = totalIngressAmount - totalEgressAmount;
+
+    const totalBalance = sumIngress - sumEgress;
+
     return (
 
         //Render Home
@@ -45,12 +48,12 @@ function Home(props) {
                     }
                     <div className="value__balance">
                         <p className="total__balance">Total Balance:</p>
-                        <span>${totalBalance}</span>
+                        <span>${totalBalance.toFixed(2)}</span>
                     </div>
                 </div>
                 <div>
-                    <p className="ingress">Total Ingress: ${totalIngressAmount}</p>
-                    <p className="egress">Total Egress: ${totalEgressAmount}</p>
+                    <p className="ingress">Total Ingress: ${sumIngress}</p>
+                    <p className="egress">Total Egress: ${sumEgress}</p>
                 </div>
             </div>
             <div className="last__ten">

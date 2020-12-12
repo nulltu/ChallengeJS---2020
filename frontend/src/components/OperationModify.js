@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import '../styles/operationModify.css'
+// import '../styles/operationModify.css'
 import { Link } from 'react-router-dom'
 import swal from 'sweetalert';
 import { connect } from 'react-redux'

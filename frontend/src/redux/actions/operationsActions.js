@@ -1,12 +1,12 @@
 import axios from 'axios'
 
-const path = 'https://warm-atoll-18281.herokuapp.com/'
-
+const path = 'http://localhost:8082/api/'
 const operationsActions = {
     
     addOperation : newOperation => {
         return async (dispatch, getState) => {       
-            const response = await axios.post(path + 'operation', newOperation)
+            const response = await axios.post(path + 'operations', newOperation)
+            console.log(response)
             dispatch({
                 type: 'NEW_OPERATION',
                 payload:response.data
