@@ -1,46 +1,34 @@
+
 .container__home{
     display: flex;
-    justify-content:space-around;
+    justify-content:center;
     align-items:center;
-    padding:1rem;
+    margin: 2rem;
 }
 
-.resulting div{
-display: flex;
-flex-direction: column;
-justify-content:center;
-align-items:center;
-font-size: 2rem;
-border-radius: 5px;
-margin: 5rem 2rem;
+.container__home div:nth-child(2){
+    margin: 0rem 4rem;
 }
 
-.resulting div img{
-  width: 10rem;
+.container__results img{
+    width: 10%;
 }
 
-.resulting div:nth-child(1){
-    background-color:#ebf9ff;
-    padding: 2rem 8rem 0rem 8rem;
-    margin-bottom: 1rem;
+.container__results a {
+    text-transform: uppercase;
+    text-decoration: none;
 }
 
 .ingress{
-    color: rgb(92, 146, 92);
+    color: rgb(92, 146, 92)!important;
 }
 
 .egress{
-    color: rgb(233, 139, 139);
+    color: rgb(233, 139, 139)!important;
 }
 
-.value__balance{
-display: flex;
-
-}
-
-.total__balance{
-    font-weight: bold;
-    font-size: 2rem;
+.MuiTableCell-head {
+    font-weight: bold!important;
 }
 
 @media only screen and (max-width: 1200px) {
