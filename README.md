@@ -5,10 +5,6 @@ Desarrollar una aplicación para administración de presupuesto personal. La mis
 permitir crear y editar ingresos y egresos de dinero, y mostrar un balance resultante de las
 operaciones registradas.
 
-## Demo 📦
-
-_Para ver una demo del proyecto desplegado, puedes ir a [Demo del proyecto](https://rusbent-challenge-js.herokuapp.com/)_
-
 ```# Instalar dependencias para el servidor y frontend
 
 ## Comenzando 🚀
